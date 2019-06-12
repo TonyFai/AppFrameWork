@@ -1,7 +1,7 @@
 [
 {
-  "directory": "C:/Users/Super/Desktop/AppFrameWork/app/.externalNativeBuild/cmake/release/x86_64",
-  "command": "E:\\stu\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=x86_64-none-linux-android21 --gcc-toolchain=E:/stu/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=E:/stu/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-lib.dir\\native-lib.cpp.o -c C:\\Users\\Super\\Desktop\\AppFrameWork\\app\\src\\main\\cpp\\native-lib.cpp",
-  "file": "C:\\Users\\Super\\Desktop\\AppFrameWork\\app\\src\\main\\cpp\\native-lib.cpp"
+  "directory": "C:/Users/Super/Desktop/AndroidProject/app/.externalNativeBuild/cmake/release/x86_64",
+  "command": "E:\\stu\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=x86_64-none-linux-android21 --gcc-toolchain=E:/stu/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=E:/stu/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-lib.dir\\native-lib.cpp.o -c C:\\Users\\Super\\Desktop\\AndroidProject\\app\\src\\main\\cpp\\native-lib.cpp",
+  "file": "C:\\Users\\Super\\Desktop\\AndroidProject\\app\\src\\main\\cpp\\native-lib.cpp"
 }
 ]
