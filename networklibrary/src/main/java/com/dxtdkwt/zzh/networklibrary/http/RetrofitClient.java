@@ -1,6 +1,7 @@
 package com.dxtdkwt.zzh.networklibrary.http;
 
 
+import com.dxtdkwt.zzh.networklibrary.NetworkConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -34,7 +35,7 @@ public class RetrofitClient {
 
         OkHttpClient okHttpClient = HttpClient.getInstance().getOkHttpClient();
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(NetConstant.BASE_URL)
+                .baseUrl(NetworkConstant.URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient).build();

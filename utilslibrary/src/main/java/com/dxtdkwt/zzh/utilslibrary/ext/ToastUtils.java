@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.yiyatech.utils.StaticToast;
+import com.dxtdkwt.zzh.utilslibrary.StaticToast;
 
 /**
  * ToastUtils

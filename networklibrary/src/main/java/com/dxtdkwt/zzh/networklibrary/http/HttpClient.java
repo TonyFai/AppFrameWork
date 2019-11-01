@@ -1,7 +1,7 @@
 package com.dxtdkwt.zzh.networklibrary.http;
 
 
-import com.zzh.test.network.interceptor.LoggingInterceptor;
+import com.dxtdkwt.zzh.networklibrary.interceptor.LoggingInterceptor;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,7 +1,7 @@
 package com.dxtdkwt.zzh.networklibrary.interceptor;
 
 
-import com.zzh.test.utils.LogUtils;
+import com.dxtdkwt.zzh.networklibrary.util.LogUtils;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -73,7 +73,7 @@ public class LoggingInterceptor implements Interceptor {
      *
      * @return newResponse
      */
-    private Response printlnResponseInfo(Response response) throws IOException {
+    private Response printlnResponseInfo(Response response) {
 
         Response newResponse = response;
 

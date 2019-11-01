@@ -1,8 +1,7 @@
 package com.dxtdkwt.zzh.networklibrary.download;
 
 
-
-import com.zzh.test.BaseApplication;
+import com.dxtdkwt.zzh.networklibrary.NetworkApp;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,7 +29,7 @@ class DownloadManager {
      */
     public void saveFile(ResponseBody response, final String destFileName, ProgressListener progressListener) throws IOException {
 
-        String destFileDir = BaseApplication.getInstance().getExternalFilesDir(null) + File.separator;
+        String destFileDir = NetworkApp.getApp().getExternalFilesDir(null) + File.separator;
 
         long contentLength = response.contentLength();
         InputStream is = null;

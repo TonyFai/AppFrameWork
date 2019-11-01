@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.zzh.test.BaseApplication;
+import com.dxtdkwt.zzh.networklibrary.NetworkApp;
 
 import java.io.IOException;
 
@@ -12,6 +12,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+
 
 /**
  * Created by allen on 2017/1/3.
@@ -52,7 +53,7 @@ class CacheInterceptor implements Interceptor {
      * @return 返回值
      */
     private static boolean isNetworkConnected() {
-        Context context = BaseApplication.getInstance();
+        Context context = NetworkApp.getApp();
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();

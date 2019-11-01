@@ -1,8 +1,8 @@
 package com.dxtdkwt.zzh.networklibrary.interceptor;
 
 
-import com.zzh.test.network.exception.HttpResponseException;
-import com.zzh.test.network.http.HttpResponseResult;
+import com.dxtdkwt.zzh.networklibrary.exception.HttpResponseException;
+import com.dxtdkwt.zzh.networklibrary.http.HttpResponseResult;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

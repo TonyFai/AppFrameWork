@@ -1,9 +1,17 @@
 package com.dxtdkwt.zzh.networklibrary.upload;
 
 
-import com.zzh.test.network.http.HttpClient;
-import com.zzh.test.network.http.RetrofitClient;
+import com.dxtdkwt.zzh.networklibrary.NetworkConstant;
+import com.dxtdkwt.zzh.networklibrary.http.HttpClient;
+import com.dxtdkwt.zzh.networklibrary.http.RetrofitClient;
+import com.dxtdkwt.zzh.networklibrary.interceptor.Transformer;
 
+import java.io.File;
+
+import io.reactivex.Observable;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -21,7 +29,7 @@ public class UploadRetrofit {
 
 
     private UploadRetrofit() {
-        String baseUrl = "";
+        String baseUrl = NetworkConstant.UPLOAD_URL;
         mRetrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -47,79 +55,23 @@ public class UploadRetrofit {
     }
 
 
-//    public static Observable<ImageUpLoadBean> uploadImg(String filePath,String type) {
-//        File file = new File(filePath);
-//
-//        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/"+type), file);
-//
-//        MultipartBody.Part body =
-//                MultipartBody.Part.createFormData("uploaded_file", file.getName(), requestFile);
-//
-//        return UploadRetrofit
-//                .getInstance()
-//                .getRetrofit()
-//                .create(UploadFileApi.class)
-//                .uploadImg(body,type)
-//                .compose(Transformer.switchSchedulers());
-//    }
-//
-//
-//    public static Observable<ImageUpLoadBean> uploadImg(String filePath) {
-//        File file = new File(filePath);
-//
-//        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/jpeg"), file);
-//
-//        MultipartBody.Part body =
-//                MultipartBody.Part.createFormData("uploaded_file", file.getName(), requestFile);
-//
-//        return UploadRetrofit
-//                .getInstance()
-//                .getRetrofit()
-//                .create(UploadFileApi.class)
-//                .uploadImg(NetConstant.URL_UPLOAD_IMG,body)
-//                .compose(Transformer.switchSchedulers());
-//    }
-//
-//    public static Observable<ImageUpLoadBean> uploadImg(ArrayList filePaths,String type) {
-//
-//
-//        MultipartBody.Part[] part = new MultipartBody.Part[filePaths.size()];
-//        for (int i = 0; i < filePaths.size(); i++) {
-//            String fileName = (String) filePaths.get(i);
-//            File file = new File(fileName);
-//            RequestBody requestFile =
-//                    RequestBody.create(MediaType.parse("multipart/"+type), file);
-//            part[i] = MultipartBody.Part.createFormData("file", fileName, requestFile);
-//        }
-//
-//
-//        return UploadRetrofit
-//                .getInstance()
-//                .getRetrofit()
-//                .create(UploadFileApi.class)
-//                .uploadImg(NetConstant.URL_UPLOAD_IMG, part, type)
-//                .compose(Transformer.switchSchedulers());
-//    }
-//
-//
-//    public static Observable<ImageUpLoadBean> uploadImg(ArrayList filePaths) {
-//
-//
-//        MultipartBody.Part[] part = new MultipartBody.Part[filePaths.size()];
-//        for (int i = 0; i < filePaths.size(); i++) {
-//            String fileName = (String) filePaths.get(i);
-//            File file = new File(fileName);
-//            RequestBody requestFile =
-//                    RequestBody.create(MediaType.parse("multipart/jpeg"), file);
-//            part[i] = MultipartBody.Part.createFormData("file", fileName, requestFile);
-//        }
-//
-//
-//        return UploadRetrofit
-//                .getInstance()
-//                .getRetrofit()
-//                .create(UploadFileApi.class)
-//                .uploadImg(NetConstant.URL_UPLOAD_IMG, part)
-//                .compose(Transformer.switchSchedulers());
-//    }
+    public static Observable<Object> uploadImg(String filePath, String name) {
+        File file = new File(filePath);
+
+        MultipartBody.Part[] part = new MultipartBody.Part[1];
+
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("text/plain"), file);
+        part[0] = MultipartBody.Part.createFormData("file", "uploaded_file", requestFile);
+
+
+        return UploadRetrofit
+                .getInstance()
+                .getRetrofit()
+                .create(UploadFileApi.class)
+                .uploadImg(part, name)
+                .compose(Transformer.switchSchedulers());
+    }
+
+
 }

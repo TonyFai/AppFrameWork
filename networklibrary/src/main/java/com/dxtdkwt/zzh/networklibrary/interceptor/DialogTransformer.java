@@ -1,6 +1,9 @@
 package com.dxtdkwt.zzh.networklibrary.interceptor;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+
+import com.dxtdkwt.zzh.networklibrary.view.CustomProgressDialog;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -23,10 +26,10 @@ public class DialogTransformer {
     private Activity activity;
     private String msg;
     private boolean cancelable;
-//    private CustomProgressDialog progressDialog;
+    private CustomProgressDialog progressDialog;
 
     public DialogTransformer(Activity activity) {
-        this(activity, "");
+        this(activity, DEFAULT_MSG);
     }
 
     private DialogTransformer(Activity activity, String msg) {
@@ -49,22 +52,22 @@ public class DialogTransformer {
                 return  upstream.doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(@NonNull final Disposable disposable) {
-//                        progressDialog= CustomProgressDialog.showLoading(activity, msg, cancelable);
-//                        if (cancelable) {
-//                            progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//                                @Override
-//                                public void onCancel(DialogInterface dialog) {
-//                                    disposable.dispose();
-//                                }
-//                            });
-//                        }
+                        progressDialog= CustomProgressDialog.showLoading(activity, msg, cancelable);
+                        if (cancelable) {
+                            progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                    disposable.dispose();
+                                }
+                            });
+                        }
                     }
                 }).doOnTerminate(new Action() {
                     @Override
                     public void run() {
-//                        if (progressDialog.isShowing()) {
-//                            progressDialog.cancel();
-//                        }
+                        if (progressDialog.isShowing()) {
+                            progressDialog.cancel();
+                        }
                     }
                 });
             }

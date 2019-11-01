@@ -1,8 +1,8 @@
 package com.dxtdkwt.zzh.networklibrary.download;
 
 
-import com.zzh.test.network.http.RetrofitClient;
-import com.zzh.test.network.interceptor.Transformer;
+import com.dxtdkwt.zzh.networklibrary.http.RetrofitClient;
+import com.dxtdkwt.zzh.networklibrary.interceptor.Transformer;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;

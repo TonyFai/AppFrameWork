@@ -3,8 +3,8 @@ package com.dxtdkwt.zzh.networklibrary.download;
 import android.annotation.SuppressLint;
 import android.widget.Toast;
 
-import com.zzh.test.BaseApplication;
-import com.zzh.test.network.exception.ApiException;
+import com.dxtdkwt.zzh.networklibrary.NetworkApp;
+import com.dxtdkwt.zzh.networklibrary.exception.ApiException;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -57,7 +57,7 @@ abstract class BaseDownloadObserver implements Observer<ResponseBody> {
     @SuppressLint("ShowToast")
     private void showToast(String msg) {
         if (mToast == null) {
-            mToast = Toast.makeText(BaseApplication.getInstance(), msg, Toast.LENGTH_SHORT);
+            mToast = Toast.makeText(NetworkApp.getApp(), msg, Toast.LENGTH_SHORT);
         } else {
             mToast.setText(msg);
         }

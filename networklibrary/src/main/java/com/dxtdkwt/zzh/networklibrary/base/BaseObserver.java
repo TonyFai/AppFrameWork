@@ -3,9 +3,9 @@ package com.dxtdkwt.zzh.networklibrary.base;
 
 import androidx.annotation.CallSuper;
 
-import com.dplus.dxt.toastlib.ToastUtils;
-import com.zzh.test.network.exception.HttpResponseException;
-import com.zzh.test.utils.LogUtils;
+import com.dxtdkwt.zzh.networklibrary.exception.HttpResponseException;
+import com.dxtdkwt.zzh.networklibrary.util.LogUtils;
+import com.dxtdkwt.zzh.networklibrary.util.ToastUtils;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -33,6 +33,8 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onError(Throwable e) {
+
+
         HttpResponseException responseException;
         if (e instanceof HttpException) {
             HttpException httpException = (HttpException) e;
@@ -42,7 +44,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
         } else {//其他或者没网会走这里
             responseException = new HttpResponseException("网络异常,请稍后重试", -1024);
         }
-        LogUtils.e(e);
+        LogUtils.e(e.toString());
         onFailed(responseException);
         destroy();
     }
@@ -56,7 +58,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @CallSuper
     private void onFailed(HttpResponseException responseException) {
-        ToastUtils.show(responseException.getMessage() + "(" + responseException.getStatus() + ")");
+        ToastUtils.showLong(responseException.getMessage() + "(" + responseException.getStatus() + ")");
     }
 
     private void destroy() {
@@ -65,3 +67,4 @@ public abstract class BaseObserver<T> implements Observer<T> {
         }
     }
 }
+
