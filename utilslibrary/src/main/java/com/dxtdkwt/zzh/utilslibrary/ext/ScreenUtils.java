@@ -1,6 +1,8 @@
 package com.dxtdkwt.zzh.utilslibrary.ext;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
 
 /**
  * ScreenUtils
@@ -39,4 +41,9 @@ public class ScreenUtils {
     public static int pxToDpCeilInt(Context context, float px) {
         return (int)(pxToDp(context, px) + 0.5f);
     }
+
+    public static int dp2px(int dp){
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp, Resources.getSystem().getDisplayMetrics());
+    }
+
 }

@@ -1,1 +1,1 @@
-include ':app', ':baselibrary', ':commonlibrary', ':modellibrary', ':utilslibrary', ':networklibrary'
+include ':app', ':baselibrary', ':commonlibrary', ':modellibrary', ':utilslibrary', ':networklibrary', ':webviewlibrary', ':servicemanagerlibrary', ':ipc', ':order'
