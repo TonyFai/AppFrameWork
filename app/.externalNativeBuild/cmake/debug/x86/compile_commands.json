@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/xuaohui/AndroidStudioProjects/AppFrameWork/app/.externalNativeBuild/cmake/debug/x86",
-  "command": "/Users/xuaohui/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Users/xuaohui/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/xuaohui/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c /Users/xuaohui/AndroidStudioProjects/AppFrameWork/app/src/main/cpp/native-lib.cpp",
-  "file": "/Users/xuaohui/AndroidStudioProjects/AppFrameWork/app/src/main/cpp/native-lib.cpp"
-}
-]
