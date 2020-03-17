@@ -3,9 +3,9 @@ package com.dxtdkwt.zzh.networklibrary.base;
 
 import androidx.annotation.CallSuper;
 
+import com.dxtdkwt.zzh.baselibrary.utils.LogUtils;
+import com.dxtdkwt.zzh.baselibrary.utils.ToastUtils;
 import com.dxtdkwt.zzh.networklibrary.exception.HttpResponseException;
-import com.dxtdkwt.zzh.networklibrary.util.LogUtils;
-import com.dxtdkwt.zzh.networklibrary.util.ToastUtils;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

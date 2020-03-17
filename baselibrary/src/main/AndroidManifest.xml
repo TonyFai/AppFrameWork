@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dxtdkwt.zzh.baselibrary" />
+    package="com.dxtdkwt.zzh.baselibrary" >
+
+    <application>
+        <activity android:name=".activity.BaseActivity" />
+    </application>
+</manifest>

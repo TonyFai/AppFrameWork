@@ -1,25 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dxtdkwt.zzh.appframework">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" /> <!-- 添加快捷方式 -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> <!-- 移除快捷方式 -->
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> <!-- 查询快捷方式 -->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".RecycleActivity">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup,android:icon">
+        <activity android:name=".kotlin.LearnActivity"></activity>
+        <!--
+    linux进程：进程都会有限制
+    webView很占内存，独立进程可以节省存储资源，避免oom
 
+    hardwareAccelerated 硬件加速
+        -->
+        <activity
+            android:name=".ui.activity.WebActivity"
+            android:hardwareAccelerated="true"
+            android:process=":remoteweb" />
+        <activity android:name=".ui.activity.ViewActivity"></activity>
+        <activity android:name=".DesktopPendant.DesktopPendantActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".RecycleActivity" />
+        <activity android:name=".ui.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".ipc.GpsService"
+            android:exported="true"
+            android:process=":gps" />
+
+        <activity android:name=".ipc.IPCActivity">
+
+        </activity>
+
+        <service
+            android:name="com.example.ipc.IPCService$IPCService0"
+            android:exported="true"
+            android:process=":gps" />
     </application>
 
 </manifest>

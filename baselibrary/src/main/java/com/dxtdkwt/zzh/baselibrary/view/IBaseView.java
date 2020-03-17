@@ -1,4 +1,4 @@
-package com.dxtdkwt.zzh.baselibrary.activity;
+package com.dxtdkwt.zzh.baselibrary.view;
 
 /**
  * @author Super
@@ -17,7 +17,7 @@ public interface IBaseView {
     void showLoading();
 
     /**
-     *
+     * 展示空占位图
      */
     void onRefreshEmpty();
 }
