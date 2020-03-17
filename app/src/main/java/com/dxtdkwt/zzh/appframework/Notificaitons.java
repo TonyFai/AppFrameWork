@@ -13,6 +13,8 @@ import android.widget.RemoteViews;
 
 import androidx.annotation.RequiresApi;
 
+import com.dxtdkwt.zzh.appframework.ui.activity.MainActivity;
+
 /**
  *
  * @author peter
@@ -408,7 +410,7 @@ public class Notificaitons {
 
     public void sendCustomHeadsUpViewNotification(Context context, NotificationManager nm) {
         //创建点击通知时发送的广播
-        Intent intent = new Intent(context,MainActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pi = PendingIntent.getActivity(context,0,intent,0);
         //创建自定义顶部提醒视图
         Intent answerIntent = new Intent(context,NotificationService.class);

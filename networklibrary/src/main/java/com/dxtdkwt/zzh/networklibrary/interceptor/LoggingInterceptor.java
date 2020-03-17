@@ -1,7 +1,7 @@
 package com.dxtdkwt.zzh.networklibrary.interceptor;
 
 
-import com.dxtdkwt.zzh.networklibrary.util.LogUtils;
+import com.dxtdkwt.zzh.baselibrary.utils.LogUtils;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -121,7 +121,7 @@ public class LoggingInterceptor implements Interceptor {
             return true;
         }
         return mediaType.subtype() != null &&
-                        ("text".equals(mediaType.subtype()) ||
+                ("text".equals(mediaType.subtype()) ||
                         "json".equals(mediaType.subtype()) ||
                         "xml".equals(mediaType.subtype()) ||
                         "html".equals(mediaType.subtype()) ||

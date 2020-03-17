@@ -1,4 +1,4 @@
-package com.dxtdkwt.zzh.appframework;
+package com.dxtdkwt.zzh.appframework.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.dxtdkwt.zzh.appframework.R;
 
 import java.util.List;
 

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dxtdkwt.zzh.appframework.ui.adapter.MyAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 

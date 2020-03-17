@@ -1,7 +1,9 @@
-package com.dxtdkwt.zzh.appframework;
+package com.dxtdkwt.zzh.appframework.ui.activity;
 
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +16,14 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.dxtdkwt.zzh.appframework.BuildConfig;
+import com.dxtdkwt.zzh.appframework.DesktopPendant.DesktopPendantActivity;
+import com.dxtdkwt.zzh.appframework.R;
+import com.dxtdkwt.zzh.appframework.jni.JinTest;
+import com.dxtdkwt.zzh.appframework.ui.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     static {
         System.loadLibrary("native-lib");
     }
+
+    public native String sayHello(String string);
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -31,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         final TextView tv = findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+//        JinTest jinTest = new JinTest();
+        String str = sayHello("你好你好");
+        System.out.println("从jni返回的数据为："+str);
+
         new Thread() {
             @Override
             public void run() {
@@ -53,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         new Thread(runnable).start();
+//        FragmentManager supportFragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+//        FragmentTransaction add = fragmentTransaction.add(R.id.wb_view, MainFragment.newInstance("123", "231"));
+//        fragmentTransaction.commit();
 
         final NotificationManager nm = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         tv.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +113,16 @@ public class MainActivity extends AppCompatActivity {
 //        coil 图片加载
 
         new AlertDialog.Builder(MainActivity.this).setTitle("哈哈")
+                .setNegativeButton("跳转", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(MainActivity.this, DesktopPendantActivity.class));
+                        Toast.makeText(MainActivity.this, "跳转成功", Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .show();
 //        Notificaitons.getInstance().sendBigPictureStyleNotification(MainActivity.this, nm);
+        tv.setText("从jni返回的数据为："+str);
     }
 
     /**

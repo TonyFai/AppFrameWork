@@ -1,0 +1,37 @@
+//String name;
+//int id;
+//email
+
+//指定版本  v3版本可以不加关键字
+syntax = "proto3";
+//包名
+package com.dxtdkwt.zzh.protobufdemo;
+
+option java_package = "com.dxtdkwt.protobufdemo";
+option java_outer_classname = "Person";
+
+option csharp_namespace = "android";
+
+message _Person{
+
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
+
+    enum _PhoneType{
+        MODILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
+
+    message _PhoneNumber{
+        string number = 1;
+        _PhoneType type = 2;
+    }
+
+    //数组
+    repeated _PhoneNumber phone = 4;
+
+
+}
+

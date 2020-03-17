@@ -4,6 +4,7 @@ package com.dxtdkwt.zzh.appframework;
  * Created by peter on 2018/6/27.
  */
 
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -26,7 +27,6 @@ public class NotificationChannels {
     public final static String LOW = "low";
     public final static String MEDIA = "media";
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static void createAllNotificationChannels(Context context) {
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -34,32 +34,36 @@ public class NotificationChannels {
             return;
         }
 
-        NotificationChannel mediaChannel = new NotificationChannel(
-                MEDIA + System.currentTimeMillis(),
-                context.getString(R.string.channel_media),
-                NotificationManager.IMPORTANCE_DEFAULT);
-        mediaChannel.setSound(null, null);
-        mediaChannel.setVibrationPattern(null);
+        NotificationChannel mediaChannel = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            mediaChannel = new NotificationChannel(
+                    MEDIA + System.currentTimeMillis(),
+                    context.getString(R.string.channel_media),
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mediaChannel.setSound(null, null);
+            mediaChannel.setVibrationPattern(null);
 
-        nm.createNotificationChannels(Arrays.asList(
-                new NotificationChannel(
-                        CRITICAL,
-                        context.getString(R.string.channel_critical),
-                        NotificationManager.IMPORTANCE_HIGH),
-                new NotificationChannel(
-                        IMPORTANCE,
-                        context.getString(R.string.channel_importance),
-                        NotificationManager.IMPORTANCE_DEFAULT),
-                new NotificationChannel(
-                        DEFAULT,
-                        context.getString(R.string.channel_default),
-                        NotificationManager.IMPORTANCE_LOW),
-                new NotificationChannel(
-                        LOW,
-                        context.getString(R.string.channel_low),
-                        NotificationManager.IMPORTANCE_MIN),
-                //custom notification channel
-                mediaChannel
-        ));
+            nm.createNotificationChannels(Arrays.asList(
+                    new NotificationChannel(
+                            CRITICAL,
+                            context.getString(R.string.channel_critical),
+                            NotificationManager.IMPORTANCE_HIGH),
+                    new NotificationChannel(
+                            IMPORTANCE,
+                            context.getString(R.string.channel_importance),
+                            NotificationManager.IMPORTANCE_DEFAULT),
+                    new NotificationChannel(
+                            DEFAULT,
+                            context.getString(R.string.channel_default),
+                            NotificationManager.IMPORTANCE_LOW),
+                    new NotificationChannel(
+                            LOW,
+                            context.getString(R.string.channel_low),
+                            NotificationManager.IMPORTANCE_MIN),
+                    //custom notification channel
+                    mediaChannel
+            ));
+        }
+
     }
 }
