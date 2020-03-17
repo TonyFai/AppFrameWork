@@ -7,7 +7,6 @@ import com.dxtdkwt.zzh.utilslibrary.LogUtil;
 /**
  * Created by  peter on 2018/7/11.
  */
-
 public class CustomApplication extends BaseApplication {
 
     @Override
@@ -21,7 +20,7 @@ public class CustomApplication extends BaseApplication {
             LogUtil.i("Logg", "集成化项目");
         } else {
             LogUtil.i("Logg", "组件化项目");
-            throw new RuntimeException("组件化项目,主app 不可单独运行");
+//            throw new RuntimeException("组件化项目,主app 不可单独运行");
         }
         String serverUrl = BuildConfig.serverUrl;
         LogUtil.i("Logg", "环境的路径" + serverUrl);
