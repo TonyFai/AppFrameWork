@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<clip xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    裁剪drawable-->
+<!--    等级越大 裁剪的区域越小  最高等级 10000-->
+
+</clip>

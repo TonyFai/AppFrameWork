@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scaleHeight="25%"
+    android:scaleWidth="70%">
+<!--根据自己的等级将指定的Drawable缩放到一定比例-->
+</scale>

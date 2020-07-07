@@ -20,4 +20,11 @@ public interface IBaseView {
      * 展示空占位图
      */
     void onRefreshEmpty();
+
+    /**
+     * 刷新失败
+     *
+     * @param message 失败原因
+     */
+    void onRefreshFailure(String message);
 }

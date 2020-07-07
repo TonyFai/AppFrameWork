@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    层次化的Drawable集合-->
+    <item
+        android:id="@+id/resource_name"
+        android:bottom="10dp"
+        android:drawable="@drawable/abc_vector_test"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="10dp" />
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#0ac38e"/>
+        </shape>
+    </item>
+
+    <item android:bottom="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffff" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffff" />
+        </shape>
+    </item>
+
+</layer-list>

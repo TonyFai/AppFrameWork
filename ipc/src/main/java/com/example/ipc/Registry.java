@@ -1,5 +1,8 @@
 package com.example.ipc;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.dxtdkwt.zzh.baselibrary.utils.LogUtils;
 import com.example.ipc.annotation.ServiceId;
 
@@ -8,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Registry {
+public class Registry implements Parcelable {
 
     private static volatile Registry sInstance;
 
@@ -23,6 +26,21 @@ public class Registry {
      * @return
      */
     private ConcurrentHashMap<String, Object> mObjectMap = new ConcurrentHashMap<>();
+
+    protected Registry(Parcel in) {
+    }
+
+    public static final Creator<Registry> CREATOR = new Creator<Registry>() {
+        @Override
+        public Registry createFromParcel(Parcel in) {
+            return new Registry(in);
+        }
+
+        @Override
+        public Registry[] newArray(int size) {
+            return new Registry[size];
+        }
+    };
 
     public static Registry getInstance() {
         if (sInstance == null) {
@@ -120,5 +138,14 @@ public class Registry {
 
     Object getObject(String serviceId) {
         return mObjectMap.get(serviceId);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
     }
 }

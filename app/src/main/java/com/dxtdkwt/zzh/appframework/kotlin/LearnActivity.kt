@@ -2,27 +2,35 @@ package com.dxtdkwt.zzh.appframework.kotlin
 
 import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import com.dxtdkwt.zzh.appframework.R
 import kotlinx.android.synthetic.main.activity_learn.*
 
 //exends == ：  implements  == ,
 class LearnActivity : BaseActivity(), Runnable {
-    override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return R.layout.activity_learn
-    }
+    override fun getLayoutId(): Int = R.layout.activity_learn
+
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun run() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun parseUi() {
+        mapOf(Pair(1,2))
+        val hintMap = hashMapOf(tv_text to "错误", tv_text2 to "错误2", et_text to "错误")
+        fun parseView(vararg id: TextView) {
+            id.forEach {
+                if (it.text.toString().isEmpty()) {
+                    Toast.makeText(this, hintMap[it], Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        parseView(tv_text, tv_text2, et_text)
     }
 
     //变量声明
@@ -30,8 +38,8 @@ class LearnActivity : BaseActivity(), Runnable {
 //    var 代表是一个变量 可以随意修改  val 代表一个常量
 
     //延时加载
-    lateinit var mTextView3 : TextView;
-    var mTextView2 : TextView? = null;
+    lateinit var mTextView3: TextView;
+    var mTextView2: TextView? = null;
     val mTextView: TextView = findViewById(R.id.tv_text);
 
     //@overrride  == override 关键字

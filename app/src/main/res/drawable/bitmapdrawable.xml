@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:src="@mipmap/ic_launcher"
+    android:antialias="true"
+    android:dither="true"
+    android:filter="true"
+    android:gravity="center_vertical"
+    android:mipMap="false"
+    android:tileMode="disabled">
+
+<!--    src  图片资源-->
+<!--    antialias  扛锯齿功能-->
+<!--    dither  开启抖动效果-->
+<!--    filter  过滤效果-->
+<!--    gravity   定位-->
+<!--    mipMap  纹理映射-->
+<!--    tileMode   平铺模式-->
+
+
+</bitmap>

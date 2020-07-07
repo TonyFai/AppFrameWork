@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:constantSize="true"
+    android:variablePadding="true">
+
+<!--    constantSize   固有大小是否不随着其状态的改变而改变-->
+<!--    variablePadding  表示是否随着其状态的改变而该拜年-->
+
+</selector>

@@ -7,4 +7,8 @@
     <declare-styleable name="FlowLayoutView_Layout">
         <attr name="android:layout_gravity"/>
     </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="circle_color" format="color"/>
+    </declare-styleable>
 </resources>

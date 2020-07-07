@@ -6,6 +6,8 @@ if (isModule) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 def app_android = getRootProject().ext.app_android
 
 android {
@@ -36,7 +38,7 @@ android {
     // 配置资源路径，方便测试环境，打包不集成到正式环境
     sourceSets {
         main {
-            if (!isRelease) {
+            if (!isModule) {
                 // 如果是组件化模式，需要单独运行时
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
@@ -46,12 +48,24 @@ android {
                     // release 时 debug 目录下文件不需要合并到主工程
                     exclude '**/debug/**'
                 }
+                kotlin {
+                    exclude '**/debug/**'
+                }
                 // resources {
                 // exclude '**/debug/**'
                 // }
             }
         }
     }
+
+    dataBinding {
+        enabled true
+    }
+
+    kapt {  // kapt 配置
+        generateStubs = true
+    }
+
 
 }
 
@@ -68,4 +82,6 @@ dependencies {
     app_impl.each { k, v -> implementation v }
 
     implementation project(":baselibrary")
+
+    kapt 'com.android.databinding:compiler:2.3.3'
 }

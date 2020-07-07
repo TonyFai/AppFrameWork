@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 /// 应用com.google.protobuf
 apply plugin: 'com.google.protobuf'
 
+
+
 //rootProject Gradle 内置的
 //弱类型语言   类型可以推到
 //def myName = this.rootProject.ext.usename
@@ -72,6 +74,41 @@ android {
         exclude 'META-INF/LICENSE' // will not include LICENSE file
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
+
+    //配置定制dex文件的生成过程   maindexlist.txt这个文件
+    afterEvaluate{
+        println "afterEvaluate"
+        tasks.matching {
+            it.name.startsWith('dex')
+        }.each { dx->
+            def listFile = project.rootDir.absolutePath + '/app/maindexlist.txt'
+            println "root dir:"+ project.rootDir.absolutePath
+            println "dex task found: "+ dx.name
+            if (dx.additionalParameters == null){
+                dx.additionalParameters = []
+            }
+            //--multi-dex  表示当方法数越界时则生成多个dex文件
+            dx.additionalParameters += '--multi-dex'
+            //--main-dex-list 指定了要在主dex中打包多类多列表
+            dx.additionalParameters += '--main-dex-list=' + listFile
+            //-minimal-main-dex 表明只有 --main-dex-list 所指定多类才能打包到主dex中
+            dx.additionalParameters += '--minimal-main-dex'
+        }
+    }
 }
 
 protobuf {
@@ -114,8 +151,15 @@ dependencies {
     ///引入支持库
     implementation 'com.google.protobuf:protobuf-java:3.5.1'
 
+    implementation 'com.nineoldandroids:library:2.4.0'
+
     //集成话处理
     if (isModule) {
         implementation project(path: ':order')
     }
+
+    implementation 'androidx.palette:palette:1.0.0'
+
+    //测试库的基本使用
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

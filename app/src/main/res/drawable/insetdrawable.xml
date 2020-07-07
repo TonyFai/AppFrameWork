@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    可以将其他drawable内嵌到自己当中，并可以在四周流出一定的间距-->
+
+</inset>

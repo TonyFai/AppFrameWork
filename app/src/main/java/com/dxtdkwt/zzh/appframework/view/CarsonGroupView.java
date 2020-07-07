@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +21,8 @@ public class CarsonGroupView extends ViewGroup {
      * //缩紧的尺寸
      */
     private static final int OFFSET = 100;
+    private int mLastXIntercept;
+    private int mLastYIntercept;
 
     public CarsonGroupView(Context context) {
         super(context);
@@ -102,14 +105,14 @@ public class CarsonGroupView extends ViewGroup {
                 break;
         }
 
-        LogUtils.i("渣渣辉","子控件的数量为："+count);
+        LogUtils.i("渣渣辉", "子控件的数量为：" + count);
         for (int i = 0; i < count; i++) {
             final View child = getChildAt(i);
             if (child == null) {
-                LogUtils.i("渣渣辉","不为空的");
+                LogUtils.i("渣渣辉", "不为空的");
                 childTop += 0;
             } else if (child.getVisibility() != GONE) {
-                LogUtils.i("渣渣辉","没有隐藏");
+                LogUtils.i("渣渣辉", "没有隐藏");
 //                final int childWidth = child.getMeasuredWidth();
 //                final int childHeight = child.getMeasuredHeight();
 
@@ -217,6 +220,7 @@ public class CarsonGroupView extends ViewGroup {
     }
 
     //常用的方法onMeasure();
+
     /**
      * getChildCount();获取子View的数量
      * getChildAt(i) 获取第i个控件
@@ -226,4 +230,51 @@ public class CarsonGroupView extends ViewGroup {
      * getPaddingLeft/Right/Top/Bottom()获取控件的四周内边距
      * setMeasureDimension(width,height);重新设置控件的宽高
      */
+
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean intercepted = false;
+        int x = (int) ev.getX();
+        int y = (int) ev.getY();
+        switch (ev.getAction()) {
+            //不可拦截   不受FLAG_DISALLOW_INTERCEPT 这个标记位的控制，一旦拦截，所有订单事件都无法传递到子元素中去
+            case MotionEvent.ACTION_DOWN:
+                intercepted = false;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (onTouchEvent(ev)) {
+                    intercepted = true;
+                } else {
+                    intercepted = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                intercepted = false;
+                break;
+            default:
+                break;
+        }
+        mLastXIntercept = x;
+        mLastYIntercept = y;
+
+        return intercepted;
+
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        super.requestDisallowInterceptTouchEvent(disallowIntercept);
+    }
 }
